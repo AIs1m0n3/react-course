@@ -18,11 +18,9 @@ export const Users = () => {
   };
 
   const fetchUsers = async () => {
-    try {
-      const res = await axios.get(`${API_URL}/users`);
-      const data: IUserResponse = res.data;
-      setUserList(data.users);
-    } catch (e) {}
+    const res = await axios.get(`${API_URL}/users`);
+    const data: IUserResponse = res.data;
+    setUserList(data.users);
   };
 
   useEffect(() => {
