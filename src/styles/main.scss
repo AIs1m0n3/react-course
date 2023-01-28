@@ -5,3 +5,18 @@ button {
   outline: none;
   cursor: pointer;
 }
+
+.app-content {
+  padding: 2rem 0;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IUser } from "../../../model/user";
 import { UserCardDetail } from "./user-card-detail";
 
@@ -18,9 +19,13 @@ export const UserCard = (props: Props) => {
 
         <h2>{user.firstName + " " + user.lastName}</h2>
 
-        <button onClick={() => handleUser(user.id)}>
+        {/* <button onClick={() => handleUser(user.id)}>
           {isActive ? "Chiudi" : "Dettaglio"}
-        </button>
+        </button> */}
+
+        <Link to={`${user.id}`} className="link" state={user}>
+          Dettaglio
+        </Link>
       </div>
 
       {isActive && <UserCardDetail user={props.user} removeUser={removeUser} />}
