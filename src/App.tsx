@@ -1,11 +1,18 @@
 import React from "react";
 import "./App.scss";
-import { Users } from "./modules/pages/users/users";
+import { BrowserRouter } from "react-router-dom";
+import { AppRoutes } from "./app-router";
+import { Header } from "./modules/layout/header";
 
 function App() {
   return (
     <div className="App">
-      <Users />
+      <BrowserRouter>
+        <Header />
+        <div className="app-content">
+          <AppRoutes />
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

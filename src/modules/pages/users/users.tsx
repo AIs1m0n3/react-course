@@ -4,23 +4,40 @@ import { API_URL } from "../../../contants";
 import { IUser, IUserResponse } from "../../../model/user";
 import { UserCard } from "./user-card";
 
+type TUserState = {
+  loading: boolean;
+  error: boolean;
+  users: IUser[] | null;
+};
+
 export const Users = () => {
-  const [userList, setUserList] = useState<IUser[] | null>(null);
-  const [activeUser, setActiveUser] = useState<number | null>(null);
-
-  const removeUser = (id: number) => {
-    const newUserList = userList?.filter(user => user.id !== id);
-    newUserList && setUserList(newUserList);
-  };
-
-  const handleUser = (id: number) => {
-    setActiveUser(id === activeUser ? null : id);
-  };
+  const [userState, setUserState] = useState<TUserState>({
+    loading: false,
+    error: false,
+    users: null,
+  });
 
   const fetchUsers = async () => {
-    const res = await axios.get(`${API_URL}/users`);
-    const data: IUserResponse = res.data;
-    setUserList(data.users);
+    setUserState({
+      ...userState,
+      loading: true,
+    });
+
+    try {
+      const res = await axios.get(`${API_URL}/users`);
+      const data: IUserResponse = res.data;
+      setUserState({
+        ...userState,
+        users: data.users,
+        loading: false,
+      });
+    } catch (e) {
+      setUserState({
+        ...userState,
+        loading: false,
+        error: true,
+      });
+    }
   };
 
   useEffect(() => {
@@ -31,14 +48,12 @@ export const Users = () => {
     <div className="users">
       <h1>Utenti</h1>
       <div className="users-list">
-        {userList?.map(user => (
-          <UserCard
-            key={user.id}
-            user={user}
-            removeUser={removeUser}
-            handleUser={handleUser}
-            isActive={user.id === activeUser}
-          />
+        {userState.loading && "Loading"}
+        {userState.error && "Error"}
+
+        {userState.users?.length === 0 && "No users found"}
+        {userState.users?.map(user => (
+          <UserCard key={user.id} user={user} />
         ))}
       </div>
     </div>
