@@ -66,3 +66,13 @@ export interface IUser {
   ssn: string;
   userAgent: string;
 }
+
+export interface INewUser {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  username: string;
+  birthDate: string;
+  image: string;
+}

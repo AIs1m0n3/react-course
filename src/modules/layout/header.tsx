@@ -5,6 +5,7 @@ export const Header = () => {
     <div className="header">
       <Link to="/"> Homepage </Link>
       <Link to="/users"> Users </Link>
+      <Link to="/users/new"> Add user </Link>
     </div>
   );
 };
