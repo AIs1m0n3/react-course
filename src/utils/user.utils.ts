@@ -1,11 +1,11 @@
 import { INewUser } from "../model/user";
 
 export const defaultUser: INewUser = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  phone: "",
-  username: "",
-  birthDate: "",
-  image: "",
+  firstName: null,
+  lastName: null,
+  email: null,
+  birthDate: null,
+  image: null,
+  framework: null,
+  language: null,
 };

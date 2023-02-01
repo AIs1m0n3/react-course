@@ -5,19 +5,24 @@ export interface IUserResponse {
   users: IUser[];
 }
 
-export interface IUser {
+export interface INewUser {
+  firstName: string | null;
+  lastName: string | null;
+  email: string | null;
+  birthDate: string | null;
+  image: string | null;
+  framework: string | null;
+  language: string | null;
+}
+
+export interface IUser extends INewUser {
   id: number;
-  firstName: string;
-  lastName: string;
   maidenName: string;
   age: number;
   gender: string;
-  email: string;
   phone: string;
   username: string;
   password: string;
-  birthDate: string;
-  image: string;
   bloodGroup: string;
   height: number;
   weight: number;
@@ -65,14 +70,4 @@ export interface IUser {
   ein: string;
   ssn: string;
   userAgent: string;
-}
-
-export interface INewUser {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  username: string;
-  birthDate: string;
-  image: string;
 }
