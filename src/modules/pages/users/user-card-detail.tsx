@@ -6,19 +6,18 @@ type Props = {
 };
 
 export const UserCardDetail = (props: Props) => {
-  const { id, age, job } = props.user;
-  const { removeUser } = props;
+  const { user, removeUser } = props;
 
   return (
     <div className="detail">
       <div>
-        Età: <b>{age}</b>
+        Età: <b>{user.age}</b>
       </div>
       <div>
-        Lavoro: <b>{job}</b>
+        Lavoro: <b>{user.company.title}</b>
       </div>
 
-      <button onClick={() => removeUser(id)}>Elimina</button>
+      <button onClick={() => removeUser(user.id)}>Elimina</button>
     </div>
   );
 };

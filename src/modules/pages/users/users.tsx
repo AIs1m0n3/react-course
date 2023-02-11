@@ -1,6 +1,7 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
-import { userData } from "../../../data/users";
-import { IUser } from "../../../model/user";
+import { API_URL } from "../../../contants";
+import { IUser, IUserResponse } from "../../../model/user";
 import { UserCard } from "./user-card";
 
 export const Users = () => {
@@ -16,8 +17,14 @@ export const Users = () => {
     setActiveUser(id === activeUser ? null : id);
   };
 
+  const fetchUsers = async () => {
+    const res = await axios.get(`${API_URL}/users`);
+    const data: IUserResponse = res.data;
+    setUserList(data.users);
+  };
+
   useEffect(() => {
-    setUserList(userData);
+    fetchUsers();
   }, []);
 
   return (

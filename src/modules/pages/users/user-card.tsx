@@ -16,7 +16,7 @@ export const UserCard = (props: Props) => {
       <div className="preview">
         <img src={user.image} alt="" />
 
-        <h2>{user.name}</h2>
+        <h2>{user.firstName + " " + user.lastName}</h2>
 
         <button onClick={() => handleUser(user.id)}>
           {isActive ? "Chiudi" : "Dettaglio"}
